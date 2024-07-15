@@ -1,96 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .modal {
+            display: none;
+            position: relative; /* Changed from 'fixed' to 'relative' */
+            background-color: gray;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px; /* Adjust the size as needed */
+            z-index: 9999; /* This will ensure the modal is on top of everything else */
+        }
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .button-list button {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" onclick="toggleModal()">Our other most used links (Click me again before entering a movie!)</div>
+    <div class="modal" id="myModal">
+        <div class="button-list">
+            <button onclick="navigateTo('https://flixify000.netlify.app')">flixify000.netlify.app</button>
+            <button onclick="navigateTo('https://idontcare000.netlify.app')">idontcare000.netlify.app</button>
+            <button onclick="navigateTo('https://6-21-3-11-20-8-5-20-5-1-3-8-5-18-19.netlify.app')">6-21-3-11-20-8-5-20-5-1-3-8-5-18-19.netlify.app</button>
+            <!-- Add more buttons as needed -->
+        </div>
+    </div>
+    <script>
+        let modalOpen = false;
+
+        function toggleModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = modalOpen ? 'none' : 'block';
+            modalOpen = !modalOpen;
+        }
+
+        function navigateTo(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flixify Television</title>
+  <style>
+    body {
+      background-color: #000000;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .collaborators-box {
+      width: 80%;
+      max-height: 400px;
+      overflow-y: auto;
+      background-color: black;
+      border-radius: 10px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 10px;
+    }
+    .collaborator {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: center center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title" style="text-align: center; font-size: 48px;">COLLABORATORS</div>
+  <div class="collaborators-box">
+    <!-- Replace the following placeholders with actual data -->
+    <a href="https://docs.google.com/presentation/d/149GpUX0v2xNpwbUTv0Ra1bXSBJ8VImN3yQXMYA9ZhKA/edit#slide=id.p" class="collaborator" style="background-image: url('https://lh3.googleusercontent.com/a-/ALV-UjUtk5zLvyjrZUQRx6Qlq7TfX6v6krt3FQRRbJID4d4Yud-eb0Mg=s64-c')"></a>
+  </div>
+</body>
+</html>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyStream - by Flixify</title>
     <style>
         body {
+            background-color: black;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #141414;
-            color: #fff;
-        }
-
-        .header {
-            position: relative;
-            width: 100%;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .header-image {
-            width: 100%;
-            display: block;
-        }
-
-        .play-button {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: orange;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: large;
-            color: white;
-            cursor: pointer;
-        }
-
-        .play-button:hover {
-            background-color: #e69500;
-        }
-
-        .movie-container, .js-movie-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px;
+            justify-content: space-around;
         }
 
-        .movie, .js-movie {
-            width: calc(20% - 10px);
+        .movie {
+            display: inline-block;
+            width: 200px;
+            height: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            border-radius: 5px;
-            transition: transform 0.2s;
+            transition: transform 0.5s ease, filter 0.5s ease; /* Added transition for smooth effect */
         }
 
         .movie:hover {
-            transform: scale(1.05);
+            transform: scale(1.07); /* Enlarges movie on hover */
+            filter: brightness(40%); /* Dimms movie image on hover */
         }
 
-        .movie-image, .js-movie-image {
+        .movie img {
             width: 100%;
-            display: block;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease; /* Added transition for smooth effect */
         }
 
-        .movie-title, .js-movie-title {
+        .movie-title {
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 1;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            color: white;
+            color: red;
+            padding: 40px;
+            font-size: 15px;
             text-align: center;
-            padding: 5px 0;
-            opacity: 0;
-            transition: opacity 0.2s;
+            opacity: 0; /* Hide title by default */
+            transition: opacity 0.6s ease; /* Transition for title appearance */
         }
 
-        .movie:hover .movie-title, .js-movie:hover .js-movie-title {
-            opacity: 1;
+        .movie:hover .movie-title {
+            opacity: 1; /* Show title on hover */
+        }
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flixify TV</title>
+    <style>
+        body {
+            font-family: 'AbeeZee', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: https://community.adobe.com/legacyfs/online/1062261_screenshot.jpg;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 50px; /* Adjust the font size as desired */
+            margin: 0;
+        }
+        main {
+            flex-grow: 1;
         }
     </style>
 </head>
 <body>
-    <div class="header" data-url="https://drive.google.com/file/d/1SN5RE9ydgSxMs08IqtlLO95INGoRCcAE/view?usp=drive_link">
-    <img src="https://media.cnn.com/api/v1/images/stellar/prod/screen-shot-2024-03-08-at-10-41-08-am.jpg?c=original" alt="mystreamimage" class="header-image">
-    <div class="header-title">Inside Out 2</div>
+    <header>
+        <h1>Flixify Television</h1>
+    </header>
+    <main>
+  
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.movie img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .movie {
+            display: inline-block;
+            width: 200px;
+            height: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease, filter 0.5s ease; /* Added transition for smooth effect */
+        }
+
+        .movie:hover {
+            transform: scale(1.07); /* Enlarges movie on hover */
+            filter: brightness(40%); /* Dimms movie image on hover */
+        }
+
+        .movie img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease; /* Added transition for smooth effect */
+        }
+
+        .movie-title {
+            position: absolute;
+            bottom: 0;
+            left: 1;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: red;
+            padding: 40px;
+            font-size: 15px;
+            text-align: center;
+            opacity: 0; /* Hide title by default */
+            transition: opacity 0.6s ease; /* Transition for title appearance */
+        }
+
+        .movie:hover .movie-title {
+            opacity: 1; /* Show title on hover */
+        }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.movie img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Your existing CSS here... */
+    </style>
+    <script>
+        window.onload = function() {
+            var movies = document.getElementsByClassName('movie');
+            for (var i = 0; i < movies.length; i++) {
+                movies[i].addEventListener('click', function() {
+                    alert('Enjoy your movie!');
+                });
+            }
+        };
+    </script>
+        
+    </style>
+</head>
+<body>
+
+<div class="header" style="width: 80%; display: flex; justify-content: center;">
+    <div style="position: relative; width: 100%;"> <!-- Adjusted width to 90% -->
+        <img src="https://i.ibb.co/M6GTTwT/tws-adv1sheet9-rgb-3.jpg"> <!-- Added border-radius for rounded corners -->
+        <button class="play-button" onclick="openFullscreen('https://drive.google.com/file/d/14_s96ZSrnA-14ORKnLGFAvRX3zZsQhMU/view?usp=drive_link">▶ Play</button>
+    </div>
 </div>
-    
+
+<script>
+function openFullscreen(url) {
+    window.location.href = url;
+    document.documentElement.requestFullscreen();
+}
+</script>
+
+
+
+
     <div class="movie" data-url="https://drive.google.com/file/d/1X4KKLClyHK_yIa_mYqFd4K6s_tvRAD1_/preview">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoliStTYKq_es-9ghqHVMc-vhAP8pStUQGDg&s" alt="Movie 1">
         <div class="movie-title">It - 1990</div>
@@ -501,6 +813,96 @@
                 openMovie(movieUrl);
             });
         });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: gray;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px; /* Adjust the size as needed */
+        }
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .button-list button {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" onclick="toggleModal()">Our other most used links</div>
+    <div class="modal" id="myModal">
+        <div class="button-list">
+            <button onclick="navigateTo('https://6-12-9-24-9-6-25.netlify.app/')">https://6-12-9-24-9-6.../</button>
+            <button onclick="navigateTo('https://idontcare000.netlify.app/')">https://idontcare000.netlify.app/</button>
+            <button onclick="navigateTo('https://flixify000.netlify.app/')">https://flixify000.netlify.app/</button>
+            <button onclick="navigateTo('https://netlify000.netlify.app/')">https://netlify000.netlify.app/</button>
+            <!-- Add more buttons as needed -->
+        </div>
+    </div>
+    <script>
+        let modalOpen = false;
+
+        function toggleModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = modalOpen ? 'none' : 'block';
+            modalOpen = !modalOpen;
+        }
+
+        function navigateTo(url) {
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
