@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Streaming Website</title>
+    <title>MyStream - by Flixify</title>
     <style>
         body {
             margin: 0;
@@ -86,30 +86,19 @@
 </head>
 <body>
     <div class="header">
-        <img src="header-image.jpg" alt="Featured Movie" class="header-image">
-        <button class="play-button" onclick="openFullscreen('https://example.com/featured-movie')">▶ Play</button>
+        <img src="https://media.cnn.com/api/v1/images/stellar/prod/screen-shot-2024-03-08-at-10-41-08-am.jpg?c=original" alt="mystreamimage" class="header-image">
+        <button class="play-button" onclick="openFullscreen('https://drive.google.com/file/d/1SN5RE9ydgSxMs08IqtlLO95INGoRCcAE/view?usp=drive_link')">▶ Play</button>
     </div>
     <div class="movie-container">
-        <div class="movie" onclick="openFullscreen('https://example.com/movie1')">
-            <img src="movie1.jpg" alt="Movie 1" class="movie-image">
-            <div class="movie-title">Movie 1</div>
+        <div class="movie" onclick="openFullscreen('https://drive.google.com/file/d/1OZBSvjuudnt2GxUUwSTRoFKgbrfu7WPm/view?usp=drive_link')">
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FLNASI-Garfield-Movie-Poster-Unframed%2Fdp%2FB0CWP2BWD4&psig=AOvVaw0aMY_KxMst2mbp55VJ8v16&ust=1721168078276000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODxyPCIqocDFQAAAAAdAAAAABAI" alt="Movie 1" class="movie-image">
+            <div class="movie-title">Garfield movie -2024</div>
         </div>
         <div class="movie" onclick="openFullscreen('https://example.com/movie2')">
             <img src="movie2.jpg" alt="Movie 2" class="movie-image">
             <div class="movie-title">Movie 2</div>
         </div>
         <!-- Add more movie divs as needed -->
-    </div>
-    <div class="js-movie-container">
-        <div class="js-movie" onclick="openFullscreen('https://example.com/js-movie1')">
-            <img src="js-movie1.jpg" alt="JS Movie 1" class="js-movie-image">
-            <div class="js-movie-title">JS Movie 1</div>
-        </div>
-        <div class="js-movie" onclick="openFullscreen('https://example.com/js-movie2')">
-            <img src="js-movie2.jpg" alt="JS Movie 2" class="js-movie-image">
-            <div class="js-movie-title">JS Movie 2</div>
-        </div>
-        <!-- Add more js-movie divs as needed -->
     </div>
     <script>
         function openFullscreen(url) {
